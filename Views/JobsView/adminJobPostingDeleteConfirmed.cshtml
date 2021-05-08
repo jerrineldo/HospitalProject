@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "JobPostingDeleteSuccess";
+}
+
+<h2>Job Posting Deletion Confirmed</h2>
+
+<div>
+    <h4>Success</h4>
+    <p>Your deletion of Job Posting No. @ViewData["id"] was successful.</p>
+    <hr />
+</div>
+
+<p>
+    @Html.ActionLink("Back to Job Postings List", "adminJobPostingsList")
+</p>

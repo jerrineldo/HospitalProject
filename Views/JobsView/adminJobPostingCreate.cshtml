@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Red_Lake_Hospital_Redesign_Team6.Models.DepartmentsModel>
+
+
+@{
+    ViewBag.Title = "CreateNewJobPosting";
+    var sampleExpiryDate = DateTime.Now.AddDays(30).ToString();
+}
+
+<h2>Create New Job Posting</h2>
+<p class="text-danger">*** This area is restricted to administrative users only ***</p>
+<hr />
+
+@using (Html.BeginForm("postAdminJobPostingCreate", "JobsView", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="PostingTitle">Job Title</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="PostingTitle" name="PostingTitle" type="text" value="" />
+            <span class="field-validation-valid text-danger" data-valmsg-for="PostingTitle" data-valmsg-replace="true"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="PostingDescription">Job Description</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="PostingDescription" name="PostingDescription" type="text" value="" />
+            <span class="field-validation-valid text-danger" data-valmsg-for="PostingDescription" data-valmsg-replace="true"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="PostingRemuneration">Remuneration</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="PostingRemuneration" name="PostingRemuneration" type="text" value="" />
+            <span class="field-validation-valid text-danger" data-valmsg-for="PostingRemuneration" data-valmsg-replace="true"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="PostingExpiryDate">Application Deadline</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" data-val="true" data-val-date="The field Application Deadline must be a date." data-val-required="The Application Deadline field is required." id="PostingExpiryDate" name="PostingExpiryDate" type="datetime" value="@sampleExpiryDate" />
+            <span class="field-validation-valid text-danger" data-valmsg-for="PostingExpiryDate" data-valmsg-replace="true"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="DepartmentId" class="control-label col-md-2">Hiring Department</label>
+        <div class="col-md-10">
+            <select name="DepartmentId" class="form-control">
+                @foreach (var department in Model)
+                {
+                    <option value="@department.DepartmentId">@department.DepartmentName</option>
+                }
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to Job Postings List", "adminJobPostingsList")
+</div>

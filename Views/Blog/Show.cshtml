@@ -1,0 +1,39 @@
+﻿@model Red_Lake_Hospital_Redesign_Team6.Models.ViewModels.ShowBlogViewModel
+
+@{
+    ViewBag.Title = "Show";
+}
+
+<h2>@Model.Blog.title</h2>
+<div class="navbar">
+    <a class="navlink" href="/Blog/List">Back</a>
+</div>
+
+<div style="overflow:hidden;">
+    <table>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Blog.title) :
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Blog.title)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Blog.text) :
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Blog.text)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Blog.email) :
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Blog.email)
+            </td>
+        </tr>
+    </table>
+</div>

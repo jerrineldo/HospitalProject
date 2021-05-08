@@ -1,0 +1,17 @@
+﻿@model Red_Lake_Hospital_Redesign_Team6.Models.BlogModel
+
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+
+<h2>Delete Blog</h2>
+
+<div class="navbar">
+    <a class="navlink" href="/Blog/AdminShow/@Model.blog_id">Back</a>
+</div>
+
+<h2> Are you sure you want to delete @Html.DisplayFor(model => model.title) ? </h2>
+
+<form method="POST" action="/Blog/Delete/@Model.blog_id">
+    <div class="inpfield"><input type="submit" value="Confirm" /></div>
+</form> 

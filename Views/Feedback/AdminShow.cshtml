@@ -1,0 +1,58 @@
+﻿@model Red_Lake_Hospital_Redesign_Team6.Models.ViewModels.ShowFeedbackViewModel
+
+@{
+    ViewBag.Title = "Show";
+}
+
+<h2>@Model.Feedback.title</h2>
+<div class="navbar">
+    <a class="navlink" href="/Feedback/AdminList">Back</a><br>
+    <a class="navlink" href="/Feedback/Update/@Model.Feedback.feedback_id">Update</a><br>
+    <a class="navlink" href="/Feedback/DeleteConfirm/@Model.Feedback.feedback_id">Delete</a>
+</div>
+
+<div style="overflow:hidden;">
+    <table>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Feedback.fname) :
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Feedback.fname)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Feedback.lname) :
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Feedback.lname)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Feedback.email) :
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Feedback.email)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Feedback.title) :
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Feedback.title)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Feedback.text) :
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Feedback.text)
+            </td>
+        </tr>
+    </table>
+</div>
+

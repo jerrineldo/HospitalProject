@@ -1,0 +1,17 @@
+﻿@model Red_Lake_Hospital_Redesign_Team6.Models.ViewModels.JobPostingsViewModel
+
+@{
+    ViewBag.Title = "JobPostingEdit";
+}
+
+<h2>Job Posting Edited</h2>
+
+<div>
+    <h4>Success</h4>
+    <p>Your changes to Job Posting No. @Model.PostingId has been recorded.</p>
+    <hr />
+</div>
+
+<p>
+    @Html.ActionLink("Back to Job Postings List", "adminJobPostingsList")
+</p>

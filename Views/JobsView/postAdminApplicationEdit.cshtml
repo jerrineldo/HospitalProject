@@ -1,0 +1,17 @@
+﻿@model Red_Lake_Hospital_Redesign_Team6.Models.ViewModels.JobApplicationViewModel
+
+@{
+    ViewBag.Title = "JobApplicationEdit";
+}
+
+<h2>Job Application Edit Confirmation</h2>
+
+<div>
+    <h4>Success</h4>
+    <p>Your changes to Job Application No. @Model.ApplicationId has been recorded.</p>
+    <hr />
+</div>
+
+<p>
+    @Html.ActionLink("Back to Job Applications List", "adminJobApplicationsList")
+</p>

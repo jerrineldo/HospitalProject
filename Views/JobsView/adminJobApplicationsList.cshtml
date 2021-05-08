@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Red_Lake_Hospital_Redesign_Team6.Models.ViewModels.JobApplicationViewModel>
+
+
+@{
+    ViewBag.Title = "AdminJobApplicationList";
+}
+
+<h2>Job Applications List</h2>
+<p class="text-danger">*** This area is restricted to administrative users only ***</p>
+<p>All received job applications can be viewed on this page. Results are sorted by the Job Posting ID and the Application Submission Date.</p>
+<hr />
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ApplicationId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PostingId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApplicationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApplicantFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApplicantLastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApplicantEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApplicantPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CvPath)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplicationId)
+            </td>
+            <td>
+                @Html.ActionLink("Posting " + item.PostingId, "JobPostingDetails", new { id = item.PostingId })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplicationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplicantFirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplicantLastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplicantEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplicantPhone)
+            </td>
+            <td>
+                <a href="/CvPackages/@Path.GetFileName(item.CvPath)">Cover Letter & Resume</a>
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "adminJobApplicationEdit", new { id= item.ApplicationId }) |
+                @Html.ActionLink("Delete", "adminJobApplicationDelete", new { id= item.ApplicationId })
+            </td>
+        </tr>
+    }
+
+</table>

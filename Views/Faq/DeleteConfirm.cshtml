@@ -1,0 +1,13 @@
+﻿@model Red_Lake_Hospital_Redesign_Team6.Models.FaqDto
+
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+
+<div class="container">
+    <h2>Delete Confirm? You Sure?</h2>
+
+    <form method="POST" action="/Faq/Delete/@Model.faq_id">
+        <div class="inpfield"><input type="submit" value="Confirm" /></div>
+    </form>
+</div>

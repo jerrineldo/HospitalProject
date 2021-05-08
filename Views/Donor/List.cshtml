@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Red_Lake_Hospital_Redesign_Team6.Models.DonorDto>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrgName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Addressl1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Addressl2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Country)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Province)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PostalCode)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrgName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Addressl1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Addressl2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Country)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Province)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PostalCode)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.DonorId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.DonorId }) |
+            @Html.ActionLink("Delete", "DeleteConfirm", new { id=item.DonorId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,17 @@
+﻿@model Red_Lake_Hospital_Redesign_Team6.Models.ViewModels.JobApplicationViewModel
+
+@{
+    ViewBag.Title = "JobPostingDetails";
+}
+
+<h2>Job Application Confirmation</h2>
+
+<div>
+    <h4>Application Received</h4>
+    <p>Thank you for your interest, @Model.ApplicantFirstName @Model.ApplicantLastName. We will contact you if you are selected to proceed.</p>
+    <hr />
+</div>
+
+<p>
+    @Html.ActionLink("Back to Current Job Opportunities", "JobPostingsList")
+</p>

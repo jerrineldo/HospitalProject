@@ -1,0 +1,72 @@
+﻿@model Red_Lake_Hospital_Redesign_Team6.Models.ViewModels.ShowContact
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Contact</h4>
+    <div>
+        <nav class="editnav">
+            <ul>
+                <li>@Html.ActionLink("Back to List", "List")</li>
+                @if (Model.isadmin)
+                {
+                    <li>@Html.ActionLink("Delete", "DeleteConfirm", new { id = Model.contact.contact_id })</li>
+                    <li>@Html.ActionLink("Edit", "Edit", new { id = Model.contact.contact_id })</li>
+                }
+            </ul>
+
+        </nav>
+        <hr />
+        <dl class="dl-horizontal">
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.contact.Firstname)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.contact.Firstname)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.contact.Lastname)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.contact.Lastname)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.contact.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.contact.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.contact.Phone)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.contact.Phone)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.contact.Message)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.contact.Message)
+            </dd>
+
+        </dl>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.contact.contact_id })
+</p>

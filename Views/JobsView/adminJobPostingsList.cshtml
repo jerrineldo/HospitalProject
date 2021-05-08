@@ -1,0 +1,94 @@
+﻿@model IEnumerable<Red_Lake_Hospital_Redesign_Team6.Models.ViewModels.JobPostingsViewModel>
+
+@{
+    ViewBag.Title = "JobPostingsList";
+}
+
+
+<h2>Job Postings List</h2>
+<p class="text-danger">*** This area is restricted to administrative users only ***</p>
+<p>All current job postings can be viewed on this page. Results are sorted by the Job Posting ID and the Application Submission Date.</p>
+<p>Use the links below to create, edit or delete job postings.</p>
+<hr />
+
+<p>
+    @Html.ActionLink("Create New Job Posting", "adminJobPostingCreate")
+</p>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PostingId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApplicationUserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContactEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PostingDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PostingExpiryDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PostingTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PostingDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PostingRemuneration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DepartmentId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Department)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostingId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplicationUserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostingDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostingExpiryDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostingTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostingDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostingRemuneration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartmentId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "adminJobPostingEdit", new { id = item.PostingId }) |
+                @Html.ActionLink("Delete", "adminJobPostingDelete", new { id = item.PostingId })
+            </td>
+        </tr>
+    }
+
+</table>

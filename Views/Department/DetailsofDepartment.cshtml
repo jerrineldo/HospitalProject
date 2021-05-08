@@ -1,0 +1,67 @@
+﻿@model Red_Lake_Hospital_Redesign_Team6.Models.ViewModels.DepartmentDetails
+@{
+    ViewBag.Title = "DetailsofDepartment";
+}
+
+<h2>Department : @Model.DepartmentDto.DepartmentName</h2>
+<hr />
+@if (Model.isadmin || Model.isloggedinUser)
+{
+    @Html.ActionLink("Create New Testimonial", "Create", "Testimonial", new { id = Model.DepartmentDto.DepartmentId }, null)
+}
+<div class="container">
+    <h3 class="departmentdetails-title" align="center">Patient Testimonials</h3>
+    <div class="row">
+        @foreach (var testimonial in Model.Testimonials)
+        {
+            string pic = "/Content/Testimonials/default.jpg";
+            string alt = "No Profile Picture Provided.";
+            if (testimonial.Has_Pic)
+            {
+                pic = "/Content/Testimonials/" + testimonial.testimonial_Id + "." + testimonial.Pic_Extension;
+                alt = "Picture of " + testimonial.first_Name + testimonial.last_Name;
+            }
+
+            <div class="card departmentdetails-card col-md-3" style="width: 18rem;">
+                <img class="card-img-top department-details-img" src="@pic" alt="@alt">
+                <div class="card-body">
+                    <div class="card-text">@Html.Raw(testimonial.testimonial_Content)</div>
+                    <h6 class="card-subtitle mb-2 text-muted">- @testimonial.first_Name @testimonial.last_Name</h6>
+                    @if (Model.isadmin | (Model.isloggedinUser && testimonial.Id == Model.userid))
+                    {
+                        <div class="department-button align-items-end">
+                            @Html.ActionLink("Edit", "UpdateTestimonial", "Testimonial", new { TestimonialId = testimonial.testimonial_Id, DepartmentId = Model.DepartmentDto.DepartmentId }, new { @class = "btn btn-primary department-button" })
+                            @Html.ActionLink("Delete", "DeleteConfirm", "Testimonial", new { DepartmentId = Model.DepartmentDto.DepartmentId, TestimonialId = testimonial.testimonial_Id }, new { @class = "btn btn-primary department-button" })
+                        </div>
+                    }
+                </div>
+            </div>
+
+        }
+    </div>
+    <hr />
+    <h3 class="departmentdetails-title" align="center">Job Postings</h3>
+    <div class="row">
+        @foreach (var jobPosting in Model.JobPostings)
+        {
+            <div class="card jobdetails-card col-md-3" style="width: 18rem;">
+                <div class="card-body">
+                    <h3 class="card-title">@jobPosting.PostingTitle</h3>
+                    <p class="card-text jobcard">@jobPosting.PostingDescription</p>
+                    <h6 class="card-subtitle mb-2 text-muted">- Posted on @jobPosting.PostingDate</h6>
+                    @if (Model.isadmin)
+                    {
+                        <div class="department-button align-items-end">
+                            @Html.ActionLink("Edit", "adminJobPostingEdit", "JobsView", new { id = jobPosting.PostingId }, new { @class = "btn btn-primary department-button" })
+                            @Html.ActionLink("Delete", "adminJobPostingDelete", "JobsView", new { id = jobPosting.PostingId }, new { @class = "btn btn-primary department-button" })
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Back to Departments", "ListDepartments", "Department", null)
+</div>

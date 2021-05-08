@@ -1,0 +1,105 @@
+﻿@model IEnumerable<Red_Lake_Hospital_Redesign_Team6.Models.ViewModels.JobPostingsViewModel>
+
+@{
+    ViewBag.Title = "JobPostingsList";
+}
+
+<h2>Job Opportunities</h2>
+<hr />
+
+<div class="container-fluid">
+    <form action="/JobsView/Jobsearch" method="get">
+            <label class="control-label col-md-3" for="searchParam">Search Job Opportunities</label>
+            <div class="col-md-12 form-group">
+                <input class="form-control text-box single-line" type="text" name="searchParam" id="searchParam" />
+                <span class="field-validation-valid text-danger" data-valmsg-for="searchParam" data-valmsg-replace="true"></span>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <input type="submit" value="Search" class="btn btn-default" />
+                </div>
+            </div>
+    </form>
+</div>
+
+
+<div class="container-fluid">
+    <hr />
+    <h2 class="h3">Current Opportunities</h2>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PostingId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApplicationUserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PostingDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PostingExpiryDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PostingTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PostingDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PostingRemuneration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DepartmentId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Department)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PostingId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ApplicationUserId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContactEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PostingDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PostingExpiryDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PostingTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PostingDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PostingRemuneration)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DepartmentId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Department)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "JobPostingDetails", new { id = item.PostingId })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

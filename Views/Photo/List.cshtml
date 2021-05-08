@@ -1,0 +1,64 @@
+﻿@model  Red_Lake_Hospital_Redesign_Team6.Models.ViewModels.ListPhotos
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+
+<p>
+    @if (Model.isadmin)
+    {
+        //Conditional rendering based on admin or non-admin
+        @Html.ActionLink("Create New", "Create")
+    }
+</p>
+
+
+<div class="paginate">
+    @{
+        int PrevPage = Convert.ToInt32(ViewData["PageNum"]) - 1;
+        int NextPage = Convert.ToInt32(ViewData["PageNum"]) + 1;
+        @Html.ActionLink("Prev", "List", new { PageNum = PrevPage })
+        @ViewData["PageSummary"]
+        @Html.ActionLink("Next", "List", new { PageNum = NextPage })
+    }
+</div>
+<div class="record-container">
+    @foreach (var photo in Model.photos)
+    {
+        <div class="record">
+            <div class="_record">
+                @{
+
+                    string pic =  photo.photo_path + photo.photo_id + ".jpg";
+                    string alt = photo.description + "  photo taken by " + photo.photographer_fname + " " + photo.photographer_lname; ;
+
+                }
+
+                @if (Model.isadmin)
+                {
+                    <nav class="linknav">
+                        <span class="editlink">@Html.ActionLink("Edit", "Edit", new { id = photo.photo_id })</span>
+                    </nav>
+
+                }
+
+            <div class="imagecontainer">
+                <a data-lightbox="photo-@photo.photo_id" href="@pic" data-title="@alt">
+                    <img src="@pic" alt="@alt" />
+                </a>
+                <p>@photo.description</p>
+            </div>
+                <div class="recordtitle">
+                    @Html.ActionLink(photo.description,
+                   "Details",
+                   new { id = photo.photo_id })
+                </div>
+
+
+            </div>
+        </div>
+    }
+</div>

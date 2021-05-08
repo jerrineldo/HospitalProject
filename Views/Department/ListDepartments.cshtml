@@ -1,0 +1,42 @@
+﻿@model Red_Lake_Hospital_Redesign_Team6.Models.ViewModels.ShowDepartment
+
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>Departments</h2>
+
+@if (Model.isadmin)
+{
+    <p>
+        @Html.ActionLink("Create New Department", "Create")
+    </p>
+}
+<div class="paginate">
+    @if (Model.departments.Count() > 0)
+    {
+        int PrevPage = Convert.ToInt32(ViewData["PageNum"]) - 1;
+        int NextPage = Convert.ToInt32(ViewData["PageNum"]) + 1;
+        @Html.ActionLink("Prev", "ListDepartments", new { PageNum = PrevPage })
+        @ViewData["PageSummary"]
+        @Html.ActionLink("Next", "ListDepartments", new { PageNum = NextPage })
+    }
+</div>
+
+@foreach (var item in Model.departments)
+{
+    <div class="card department-card" style="width: 18rem;">
+        <div class="card-body">
+            <h3 class="card-title">@item.DepartmentName</h3>
+            <div class="department-button">
+                @Html.ActionLink("Details", "DetailsofDepartment", "Department", new { id = item.DepartmentId }, new { @class = "btn btn-primary department-button" })
+                @if (Model.isadmin)
+                {
+                    @Html.ActionLink("Edit", "Update", "Department", new { id = item.DepartmentId }, new { @class = "btn btn-primary department-button" }); <br />
+                    @Html.ActionLink("Delete", "DeleteConfirm", "Department", new { id = item.DepartmentId }, new { @class = "btn btn-primary department-button" })
+
+                }
+            </div>
+        </div>
+    </div>
+}

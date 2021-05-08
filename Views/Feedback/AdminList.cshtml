@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Red_Lake_Hospital_Redesign_Team6.Models.FeedbackDto>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>Feedback List</h2>
+
+<div class="navbar">
+    <a class="navlink" href="/Feedback/Create">New Entry</a>
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            First Name
+        </th>
+        <th>
+            Last Name
+        </th>
+        <th>
+            email
+        </th>
+        <th>
+            title
+        </th>
+        <th>
+            text
+        </th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.fname)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.lname)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.email)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.title)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.text)
+    </td>
+    <td>
+        <a href="/Feedback/AdminShow/@item.feedback_id">Read More</a>
+    </td>
+</tr>
+    }
+
+</table>
